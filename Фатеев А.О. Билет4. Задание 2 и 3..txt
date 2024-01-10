@@ -1,0 +1,56 @@
+Вопрос 2: Дано натуральное число n. Выведите все числа от 1 до n. Реализовать при помощи рекурсии.
+
+#include <iostream>
+
+void printNumbers(int n) {
+    if (n > 0) {
+        printNumbers(n - 1);  
+        std::cout << n << " ";  
+    }
+}
+
+int main() {
+    int n;
+    std::cout << "Введите натуральное число n: ";
+    std::cin >> n;
+  
+    std::cout << "Числа от 1 до " << n << ": ";
+    printNumbers(n);  
+    std::cout << std::endl;
+
+    return 0;
+}
+
+Вопрос 3: Элементы массива циклически сдвинуть на две позиции влево.
+
+#include <iostream>
+using namespace std;
+void leftRotateByTwo(int arr[], int n) {
+    if (n > 1) {
+        int temp1 = arr[0], temp2 = arr[1];
+        for (int i = 0; i < n - 2; i++) {
+            arr[i] = arr[i + 2];
+        }
+        arr[n - 2] = temp1;
+        arr[n - 1] = temp2;
+    }
+}
+int main() {
+    int arr[] = {442, 23, 3412, 42, 566, 216, 723, 4158, 229};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Исходный массив: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    leftRotateByTwo(arr, n);
+
+    cout << "Массив после сдвига влево на два: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
